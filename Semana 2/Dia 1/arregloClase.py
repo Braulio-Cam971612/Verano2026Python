@@ -8,17 +8,33 @@ class persona:
         self.nombre = nombre
         self.edad = edad
 
-personas = []
+    def mostrarDato(self):
+        return "Nombre:",self.nombre,", edad:", self.edad
+    
+    #seccion de gets
+    def getnombre(self):
+        return self.nombre    
+    
+    def getedad(self):
+        return self.edad    
+#esta es la clase, archivo aparte
+
+
+personasArreglo = []
 textoRespuesta = ""
 
 #Funciones
 def mostrar():
-   print("Los usuarios del sistema: ", personas)
+   print("Los usuarios del sistema: ", personasArreglo)
+   for items in personasArreglo:
+       #print(items.mostrarDato())
+        resultadoTemporal = "El nombre es:", items.getnombre()
+        print(resultadoTemporal)
    
 
 def buscar(usuarioNombre):
-    if usuarioNombre in personas:
-        indice = personas.index(usuarioNombre)
+    if usuarioNombre in personasArreglo:
+        indice = personasArreglo.index(usuarioNombre)
     else:
         indice =-1
     return indice
@@ -30,15 +46,15 @@ def borrar(nombre):
     #     indice =personas.index(usuarioNombre)
     # else:
     #     indice =-1
-    personas.remove(nombre)
+    personasArreglo.remove(nombre)
     print("El nombre: ",nombre," fue Eliminado")
 
 def modificar(nombreModificar, indice):
-   personas[indice] = nombreModificar
+   personasArreglo[indice] = nombreModificar
 
 def insertar(nombre, edad):
     nuevosDatos = persona(nombre, edad)
-    personas.append(nuevosDatos)
+    personasArreglo.append(nuevosDatos)
     print("Datos almacenados existosamente")
 
 
