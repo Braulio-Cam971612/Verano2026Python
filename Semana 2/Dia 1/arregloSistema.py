@@ -1,4 +1,5 @@
 #Mi variables
+           #0      ,1        ,2          ,3
 personas = ["Mario", "Isaac", "Alberto","Sasha"]
 textoRespuesta = ""
 
@@ -8,7 +9,7 @@ def mostrar():
 
 def buscar(usuarioNombre):
     if usuarioNombre in personas:
-        indice =personas.index(usuarioNombre)
+        indice = personas.index(usuarioNombre)
     else:
         indice =-1
     return indice
@@ -30,11 +31,11 @@ def borrarAlumno(nombre):
     # else:
     #     indice =-1
     personas.remove(nombre)
-    print("El nombre:",nombre,"fue Eliminado")
+    print("El nombre: ",nombre," fue Eliminado")
 
 def buscarDos(personas,nombre):
     if nombre in personas:
-     print("el usuario si esxiste")
+       print("el usuario si esxiste")
     else:
        print("el usuario no existe")
 
@@ -52,34 +53,33 @@ def borrar(nombre):
     return indice    
 
 mostrar()
-#modificar()
-# usuarioNuevo = input("Ingrese un nuevo usuario: ")
-# personas.append(usuarioNuevo)#Insertar elementos en un arreglo
 
-# print("Los usuarios del sistema", personas)
+usuarioNuevo = input("Ingrese un nuevo usuario: ")
+personas.append(usuarioNuevo)#Insertar elementos en un arreglo
 
-# usuarioNombre = input("Ingrese el usuario a buscar: ")
-# posicion = buscar(usuarioNombre)
+mostrar()
 
+usuarioNombre = input("Ingrese el usuario a buscar: ")
+posicion = buscar(usuarioNombre)
 
-# if posicion == -1:
-#     textoRespuesta = "No encontro datos para"
-# else:
-#     textoRespuesta = "Se encontro datos para"    
+if posicion == -1:
+    textoRespuesta = "No encontro datos para", usuarioNombre
+else:
+    textoRespuesta = "Se encontro datos para", usuarioNombre, "en el identificador: ", posicion
 
-# print (textoRespuesta, usuarioNombre, "en el identificador: ", posicion)
+print (textoRespuesta)
 
-# usuarioNombreBorrar = input("Ingrese el usuario a buscar y eliminar: ")
+usuarioNombreBorrar = input("Ingrese el usuario a buscar y eliminar: ")
 
-# posicion = buscar(usuarioNombreBorrar)
+posicion = buscar(usuarioNombreBorrar)
 
-# if posicion == -1:
-#     textoRespuesta = "No encontro datos para", usuarioNombreBorrar
-# else:
-#     borrarAlumno(usuarioNombreBorrar)
-#     textoRespuesta = "Se encontro datos para", usuarioNombreBorrar    
+if posicion == -1:
+    textoRespuesta = "No encontro datos para", usuarioNombreBorrar
+else:
+    borrarAlumno(usuarioNombreBorrar)
+    textoRespuesta = "Se encontro datos para", usuarioNombreBorrar    
 
-# print(textoRespuesta)
+print(textoRespuesta)
 
 
 usuarioNombreModificar = input("Ingrese el usuario a buscar y modificar: ")
@@ -94,6 +94,8 @@ else:
 
 print(textoRespuesta)
 mostrar()
+
+
 #La seccion de buscar
 buscar = input("Que usuario desea buscar?")
 print(personas.index(buscar))
