@@ -2,12 +2,19 @@
            #0      ,1        ,2          ,3
 #Mi variable ahora debe recibir clases, en lugar de un solo nombre
 #personas = [ {nombre, edad}, {nombre, edad }, {nombre, edad },{nombre, edad }]
-personas = ["Mario", "Isaac", "Alberto","Sasha"]
+#class persona
+class persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+personas = []
 textoRespuesta = ""
 
 #Funciones
 def mostrar():
    print("Los usuarios del sistema: ", personas)
+   
 
 def buscar(usuarioNombre):
     if usuarioNombre in personas:
@@ -29,7 +36,19 @@ def borrar(nombre):
 def modificar(nombreModificar, indice):
    personas[indice] = nombreModificar
 
+def insertar(nombre, edad):
+    nuevosDatos = persona(nombre, edad)
+    personas.append(nuevosDatos)
+    print("Datos almacenados existosamente")
 
+
+###################################Aca va el sistema
+
+nombre = input("Ingrese el nombre de la persona: ")
+edad = input("Ingrese la edad de la persona: ")
+
+insertar(nombre, edad)
+mostrar()
 #La seccion de buscar
 #La seccion de modificar
 #La seccion de borrar
