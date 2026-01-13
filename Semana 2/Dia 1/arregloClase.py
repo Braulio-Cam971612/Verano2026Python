@@ -38,7 +38,7 @@ textoRespuesta = ""
 
 #Funciones
 def mostrar():
-   print("Los usuarios del sistema: ", personasArreglo)
+   #print("Los usuarios del sistema: ", personasArreglo)
    for items in personasArreglo:
         print(items.mostrarDato())
         resultadoTemporal = "El nombre es:", items.getnombre()
@@ -64,15 +64,13 @@ def buscarId(id):
         #     return -1
     return None
 
-def borrar(nombre):
-    #un if para verificar y eliminar
-    #para evitar duplicar codigo
-    # if usuarioNombre in personas:
-    #     indice =personas.index(usuarioNombre)
-    # else:
-    #     indice =-1
-    personasArreglo.remove(nombre)
-    print("El nombre: ",nombre," fue Eliminado")
+def borrar(indice):
+    elementoPersona = buscarId(indice)#traemos el objeto desde el arreglo
+    if elementoPersona:
+        personasArreglo.remove(elementoPersona)
+        print("Eliminacion exitosa")
+    else:
+        print("Se cayo la demo")  
 
 def modificar(nombreModificar, indice):
    elementoPersona = buscarId(indice)#traemos el objeto desde el arreglo
@@ -113,6 +111,19 @@ else:
     textoRespuesta = "Se encontro datos para", usuarioNombreModificar    
 
 
+mostrar()
+
+usuarioNombreBorrar = input("Ingrese el usuario a buscar y eliminar: ")
+
+posicion = buscar(usuarioNombreBorrar)
+
+if posicion == -1:
+    textoRespuesta = "No encontro datos para", usuarioNombreBorrar
+else:
+    borrar(posicion)
+    textoRespuesta = "Se encontro datos para", usuarioNombreBorrar    
+
+print(textoRespuesta)
 mostrar()
 #La seccion de buscar
 #La seccion de modificar
