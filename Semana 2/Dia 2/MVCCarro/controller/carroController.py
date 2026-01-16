@@ -35,6 +35,18 @@ class carroController:
         else:
             vistaCarro.mostrandoMensaje(f"Datos no actualizados en {id}")
        
+    def eliminarDatos(self, id): 
+        #print(id)
+            #y llamar a la funcion de insertar 
+        objetoEncontrado = self.buscarId(id)
+        
+        if objetoEncontrado:
+            self.carroArreglo.remove(objetoEncontrado)
+
+            vistaCarro.mostrandoMensaje(f"Datos eliminados en {id}")
+        else:
+            vistaCarro.mostrandoMensaje(f"Datos no eliminados en {id}")
+
 
     def buscarId(self, id):   
         #print("Linea 40", id)     

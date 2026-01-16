@@ -21,6 +21,9 @@ def main():
 
     _carroController.mostrarLista()
 
+    _carroController.eliminarDatos(1)
+
+    _carroController.mostrarLista()
 
 if __name__ == "__main__":
     main()    
