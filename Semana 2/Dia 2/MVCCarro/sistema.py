@@ -15,6 +15,9 @@ def main():
     _carroController.insertarDatos("1235","Nissan", "T3XT", "Blanco")
     _carroController.insertarDatos("1236","Nissan", "4XT", "Azul")
     _carroController.insertarDatos("1236","Nissan", "T5XT", "Negro")
+    _carroController.mostrarLista()
+
+    _carroController.modificarDatos(2, "432", "Nissan", "2022", "Amarrillo")
 
     _carroController.mostrarLista()
 

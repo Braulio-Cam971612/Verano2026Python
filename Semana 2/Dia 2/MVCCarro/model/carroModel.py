@@ -12,11 +12,14 @@ class Carro:
     def __init__(self, placa, marca, modelo, color):
         self.id = Carro.contadorId
         Carro.contadorId += 1
-        
+
         self.placa = placa
         self.marca = marca
         self.modelo = modelo
         self.color = color
+
+    def getId(self):
+        return self.id
 
     def mostrandoDatos(self):
         return f"ID : {self.id}, {self.placa}, {self.marca}, {self.modelo}, {self.color} "
