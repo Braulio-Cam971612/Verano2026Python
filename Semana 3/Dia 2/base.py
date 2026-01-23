@@ -40,9 +40,30 @@ def mostrarPersonasId(id):
                 return item           
 
 
+def modificarPersonas(id, nombre, edad):
+   # print(id, nombre, edad)
+    arregloVacio = []
+    
+    with open(ARCHIVO, "r", newline="", encoding="utf-8") as archivoparaleer:
+        reader = csv.reader(archivoparaleer)
+        
+        for item in reader:
+            if item[0] == str(id):
+                item[1] = nombre
+                item[2] = edad
+                
+            arregloVacio.append(item)
+            
+    with open(ARCHIVO, "w", newline="", encoding="utf-8") as archivoparaescribir:
+        writer = csv.writer(archivoparaescribir)
+        writer.writerow(arregloVacio)
+  
+    print("actualizo la persona")   
+    #print(arregloVacio)
 
 print(mostrarPersonasId(3))
 #guardarPersona(3, "Isaac", 21)
+modificarPersonas(3, "Alberto", 11)
+print(mostrarPersonasId(3))
 
-
-#mostrarPersonas()
+mostrarPersonas()
