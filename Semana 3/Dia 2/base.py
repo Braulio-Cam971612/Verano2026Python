@@ -15,12 +15,34 @@ ARCHIVO = os.path.join(BASE_DIR, 'csv', 'personas.csv')
 ####???
 def guardarPersona(id, nombre, edad):
     #open    (src, atributos, lectura, systemaenco)
-    with open(ARCHIVO, "a", newline="", encoding="utf-8") as file:
-              writer = csv.writer(file)
+    with open(ARCHIVO, "a", newline="", encoding="utf-8") as archivoparaguardar:
+              writer = csv.writer(archivoparaguardar)
               
               writer.writerow([id, nombre, edad])
               
               print("Se guardaron datos")
               
-              
-guardarPersona(2, "Isaac", 21)    
+ 
+ 
+def mostrarPersonas():
+    with open(ARCHIVO, "r", newline="", encoding="utf-8") as archivoparaleer:
+        reader = csv.reader(archivoparaleer)
+        
+        for item in reader:
+            print(item)
+            
+def mostrarPersonasId(id):
+    with open(ARCHIVO, "r", newline="", encoding="utf-8") as archivoparaleer:
+        reader = csv.reader(archivoparaleer)
+        
+        for item in reader:
+            if item[0] == str(id):
+                return item           
+
+
+
+print(mostrarPersonasId(3))
+#guardarPersona(3, "Isaac", 21)
+
+
+#mostrarPersonas()
