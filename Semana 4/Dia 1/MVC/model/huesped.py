@@ -33,7 +33,6 @@ class Huesped:
         self.telefono = telefono
 
 
-
 #Metodo poliformismo
 #   
     def mostrar_info(self):
