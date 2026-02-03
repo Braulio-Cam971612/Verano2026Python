@@ -12,11 +12,15 @@
 # mostrar_info()
 
 import csv, os
+from datetime import datetime
 from model.habitacion import Habitacion
 import view.habitacionesView as vista
 
+
 BASE = os.path.dirname(os.path.dirname(__file__))
 ARCHIVO = os.path.join(BASE, "data", "habitaciones.csv")
+LogFile = os.path.join(BASE, "log", "errores.txt")
+
 
 class HabitacionController:
 
@@ -24,13 +28,30 @@ class HabitacionController:
         self.habitaciones = []
         self.cargar()
 
+    def guardarError(self, errorTexto):
+        try:        
+            fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            with open(LogFile, "a", encoding="utf-8") as file:
+                file.write(f"{fecha} --> {errorTexto}\n")
+        except Exception as nombreError:
+            print(f"Error fatal al guardar logs {nombreError} ")
+            #una notificacion por correo
+                       
+    #que pasa si solo dejamos asi???                       
+
     def cargar(self):
-        if not os.path.exists(ARCHIVO):
-            return
-        with open(ARCHIVO, "r", encoding="utf-8") as file:
-            reader = csv.reader(file)
-            for numero, tipo, precio, estado in reader:
-                self.habitaciones.append(Habitacion(numero, tipo, precio, estado))
+        try:
+#             if not os.path.exists(ARCHIVO):
+#                return
+            with open(ARCHIVO, "r", encoding="utf-8") as file:
+                reader = csv.reader(file)
+                for numero, tipo, precio, estado in reader:
+                    self.habitaciones.append(Habitacion(numero, tipo, precio, estado))
+           
+        except Exception as nombreError:
+            self.guardarError(f"Error cargando los datos de la habitacion {nombreError}")
+            vista.mensaje( f"(X) Error cargando los datos de la habitacion")
+        
 
     def guardar(self):
         with open(ARCHIVO, "w", newline="", encoding="utf-8") as file:
@@ -65,3 +86,7 @@ class HabitacionController:
         self.habitaciones.sort(key=lambda x: x.precio)
         vista.mensaje("Habitaciones ordenadas por precio.")
         self.listar()
+
+
+
+           
