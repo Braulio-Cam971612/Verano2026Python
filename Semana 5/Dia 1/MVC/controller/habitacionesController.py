@@ -54,20 +54,29 @@ class HabitacionController:
         
 
     def guardar(self):
+        #try
         with open(ARCHIVO, "w", newline="", encoding="utf-8") as file:
             writer = csv.writer(file)
             for item in self.habitaciones:                
                 writer.writerow([item.numero, item.tipo, item.precio, item.estado])
 
     def registrar(self, numero, tipo, precio, estado):
+        
+        #try
+#                 habitacion= buscar
+#         
+#         if self.estado == "Ocupada"
+#         
         self.habitaciones.append(Habitacion( numero, precio, estado, tipo))
         self.guardar()
         vista.mensaje("Habitación registrada.")
 
     def listar(self):
+        #try
         vista.mostrar_lista(self.habitaciones)
 
     def buscar(self, numero):
+        #try
         for h in self.habitaciones:
             if h.numero == numero:
                 return h
