@@ -97,7 +97,12 @@ mostrar()
 
 
 #La seccion de buscar
+# buscar = input("Que usuario desea buscar?")
+# print(personas.index(buscar))
+
 #La seccion de modificar
+# editar = input("Que usuario desea modificar?")
+
 #La seccion de borrar
 #= es para asignar un valor
 #== es para comparar un valor
